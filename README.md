@@ -12,9 +12,9 @@ The project systematically compares ResNet-50, EfficientNet-B0, and MobileNet-V3
 
 # Training results
 
-<img src="results/setup1/model1.png" alt="model" width="100"/>
-<img src="results/setup1/model2.png" alt="model" width="100"/>
-<img src="results/setup1/model3.png" alt="model" width="100"/>
+<img src="results/setup1/model1.png" alt="model" width="300"/> 
+<img src="results/setup1/model2.png" alt="model" width="300"/>
+<img src="results/setup1/model3.png" alt="model" width="300"/>
 
 
 
