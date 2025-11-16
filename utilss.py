@@ -69,3 +69,71 @@ def plot_metrics(history):
     plt.tight_layout()
     plt.show()
 
+
+import torch
+from torchvision import transforms, datasets
+from torch.utils.data import DataLoader
+
+data_dir = "DATASETS_FOR_TRAINING/raf-db-dataset/DATASET"
+train_dir = f"{data_dir}/train"
+test_dir = f"{data_dir}/test"
+
+
+train_transforms = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=[0.485, 0.456, 0.406], 
+        std=[0.229, 0.224, 0.225]
+    ),
+])
+
+test_transforms = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=[0.485, 0.456, 0.406], 
+        std=[0.229, 0.224, 0.225]
+    ),
+])
+
+train_dataset = datasets.ImageFolder(root=train_dir, transform=train_transforms)
+test_dataset = datasets.ImageFolder(root=test_dir, transform=test_transforms)
+
+
+
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=2)
+test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False, num_workers=2)
+
+
+images, labels = next(iter(train_loader))
+print("Train batch shape:", images.shape)
+print("Labels:", labels[:8])
+
+
+
+from collections import Counter
+import torch
+
+# Count how many samples per class
+label_counts = Counter(train_dataset.targets)
+num_samples = len(train_dataset)
+num_classes = len(train_dataset.classes)
+class_counts = torch.tensor([label_counts[i] for i in range(num_classes)], dtype=torch.float)
+
+class_weights = num_samples / (num_classes * class_counts)
+class_weights = class_weights / class_weights.sum() * num_classes  # optional normalization
+
+print("Class weights:", class_weights)
+
+
+label_to_emotion = {
+'surprise':0,
+'fear':1,
+'disgust':2,
+'happy':3,
+'sad':4,
+'angry':5,
+'neutral':6
+}
+label_to_emotion
