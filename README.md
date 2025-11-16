@@ -9,6 +9,15 @@ The project systematically compares ResNet-50, EfficientNet-B0, and MobileNet-V3
 
 - Setup 3 — Full fine-tuning on AffectNet (YOLO label format)
 
+
+# Training results
+
+![Alt text](results/setup1/model1.png)
+![Alt text](results/setup1/model2.png)
+![Alt text](results/setup1/model3.png)
+
+
+
 ## It includes:
 
 - Preprocessing for 3 datasets
