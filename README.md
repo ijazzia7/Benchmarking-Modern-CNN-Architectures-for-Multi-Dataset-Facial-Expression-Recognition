@@ -1,0 +1,2 @@
+# Benchmarking-Modern-CNN-Architectures-for-Multi-Dataset-Facial-Expression-Recognition
+This repository implements a unified facial emotion recognition pipeline trained and evaluated across RAF-DB, FER2013, and AffectNet.  The project systematically compares ResNet-50, EfficientNet-B0, and MobileNet-V3 under three training setups:  1) Frozen backbone, 2) train classifier head,  3) Fine-tuning on FER2013, fine-tuning on AffectNet
